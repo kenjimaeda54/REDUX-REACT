@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 
 import api from "../../servicos/index";
 import "./home.css";
+import { addReserva } from "../../store/modulos/reserve/action";
+//por ser apenas export function sem o default,precisa colocar como objeto.
 
 export default function Home() {
   const [resultado, setResultado] = useState([]);
@@ -18,10 +20,7 @@ export default function Home() {
   }, []);
 
   function adicionar(item) {
-    dispatch({
-      type: "ADD_RESERVE",
-      item,
-    });
+    dispatch(addReserva(item));
   }
 
   return (

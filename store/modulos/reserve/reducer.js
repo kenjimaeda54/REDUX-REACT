@@ -1,12 +1,12 @@
-import produce from "immer";
+import provide from "immer";
 
 export default function reducer(state = [], action) {
   switch (action.type) {
     case "ADD_RESERVE":
-      return produce(state, (draft) => {
-        const encontra = draft.findIndex((item) => item.id === action.item.id);
-        if (encontra >= 0) {
-          draft[encontra].amount += 1;
+      return provide(state, (draft) => {
+        const verifica = draft.findIndex((item) => item.id === action.item.id);
+        if (verifica >= 0) {
+          draft[verifica].amount += 1;
         } else {
           draft.push({
             ...action.item,
@@ -14,8 +14,15 @@ export default function reducer(state = [], action) {
           });
         }
       });
-
     default:
       return state;
+
+    case "REMOVE_RESERVE":
+      return provide(state,(draft)=>{
+        const verifica = draft.findIndex((item)=>item.id === action.id);
+        if(verifica =>0){
+          draft.splice(verifica, 1);
+        }
+      })  
   }
 }

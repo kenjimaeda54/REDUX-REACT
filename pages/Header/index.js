@@ -15,7 +15,7 @@ export default function Header() {
       <Link className="reserva" to="/reserva">
         <div>
           <span>Minhas resevas</span>
-          <strong>{selectorSize}reservas</strong>
+          <strong>{selectorSize} reservas</strong>
         </div>
       </Link>
     </header>
