@@ -1,33 +1,28 @@
-import React from 'react';
-import {MdDelete} from 'react-icons/md'
+import React from "react";
+import { MdDelete } from "react-icons/md";
+import { useSelector } from "react-redux";
 
-import './reserva.css';
+import "./reserva.css";
 
+export default function Reserva() {
+  const seletor = useSelector((state) => state.reducer);
+  return (
+    <div>
+      <h1 className="title"> Suas reservas:{seletor.length}</h1>
 
-export default function Reserva(){
- return (
-  <div>
-  <h1 className="title">Voce solicitou 1 reservas</h1>
-
-  <div className="reservas">
-    <img
-    src="https://sujeitoprogramador.com/wp-content/uploads/2019/12/maceio.jpg"
-    alt="Maceio"
-    />
-    <strong>Viagem Maceio 7 Dias</strong>
-    <span>Quantidade: 2</span>
-    <button
-    type="button"
-    onClick={()=> {}}
-    >
-      <MdDelete size={20} color="#191919" />
-    </button>
-  </div>
-
-  <footer>
-    <button type="button">Solicitar Reservas</button>
-  </footer>
-
- </div>
+      {seletor.map((item) => (
+        <div key={item.id} className="reservas">
+          <img src={item.image} alt={item.tile} />
+          <strong>{item.title}</strong>
+          <span>Quantidade: {item.amount}</span>
+          <button type="button" onClick={() => {}}>
+            <MdDelete size={20} color="#191919" />
+          </button>
+        </div>
+      ))}
+      <footer>
+        <button type="button">Solicitar Reservas</button>
+      </footer>
+    </div>
   );
 }

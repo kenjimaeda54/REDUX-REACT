@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { MdFlightTakeoff } from "react-icons/md";
+import { useDispatch } from "react-redux";
 
 import api from "../../servicos/index";
 import "./home.css";
 
 export default function Home() {
   const [resultado, setResultado] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function dados() {
@@ -15,6 +17,13 @@ export default function Home() {
     dados();
   }, []);
 
+  function adicionar(item) {
+    dispatch({
+      type: "ADD_RESERVE",
+      item,
+    });
+  }
+
   return (
     <div>
       <div className="box">
@@ -23,7 +32,7 @@ export default function Home() {
             <img src={item.image} alt={item.title} />
             <strong>{item.title}</strong>
             <span>Status:{item.status ? "Disponivel" : "Indisponivel"}</span>
-            <button type="button" onClick={() => {}}>
+            <button type="button" onClick={() => adicionar(item)}>
               <div>
                 <MdFlightTakeoff size={16} color="#FFF" />
               </div>

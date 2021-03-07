@@ -7,7 +7,7 @@ import store from "./store/index";
 
 function App() {
   return (
-    <Provider  store={store}>
+    <Provider store={store}>
       <BrowserRouter>
         <Header />
         <Rotas />
