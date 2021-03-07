@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import api from "../../servicos/index";
 import "./home.css";
-import { addReserva } from "../../store/modulos/reserve/action";
+import {  addToReserveRequest } from "../../store/modulos/reserve/action";
 //por ser apenas export function sem o default,precisa colocar como objeto.
 
 export default function Home() {
@@ -13,14 +13,14 @@ export default function Home() {
 
   useEffect(() => {
     async function dados() {
-      const dados = await api.get("trips");
+      const dados = await api.get('trips');
       setResultado(dados.data);
     }
     dados();
   }, []);
 
-  function adicionar(item) {
-    dispatch(addReserva(item));
+  function adicionar(id) {
+    dispatch(addToReserveRequest(id));
   }
 
   return (
@@ -31,7 +31,7 @@ export default function Home() {
             <img src={item.image} alt={item.title} />
             <strong>{item.title}</strong>
             <span>Status:{item.status ? "Disponivel" : "Indisponivel"}</span>
-            <button type="button" onClick={() => adicionar(item)}>
+            <button type="button" onClick={() => adicionar(item.id)}>
               <div>
                 <MdFlightTakeoff size={16} color="#FFF" />
               </div>

@@ -8,6 +8,7 @@ import { atualizaValor } from "../../store/modulos/reserve/action";
 
 export default function Reserva() {
   const seletor = useSelector((state) => state.reducer);
+  console.log(seletor);
   const dispatch = useDispatch();
 
   function excluirReserva(id) {
@@ -30,17 +31,17 @@ export default function Reserva() {
         <div key={item.id} className="reservas">
           <img src={item.image} alt={item.tile} />
           <strong>{item.title}</strong>
-          <MdRemoveCircle
-            size="20px"
-            color="brand"
-            onClick={() => removeValor(item)}
-          />
-          <input value={item.amount} readOnly type="text" />
-          <MdAddCircle
-            size="20px"
-            color="brand"
-            onClick={() => adicionaValor(item)}
-          />
+
+          <div id="amount">
+            <button type="button" onClick={() => removeValor(item)}>
+              <MdRemoveCircle size="20px" color="brand" />
+            </button>
+            <input value={item.amount} readOnly type="text" />
+            <button type="button" onClick={() => adicionaValor(item)}>
+              <MdAddCircle size="20px" color="brand" />
+            </button>
+          </div>
+
           <button type="button" onClick={() => excluirReserva(item.id)}>
             <MdDelete size={20} color="#191919" />
           </button>

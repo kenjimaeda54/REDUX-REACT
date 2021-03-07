@@ -1,6 +1,13 @@
+export function addToReserveRequest(id) {
+  return {
+    type: "ADD_RESERVE_REQUESTS",
+    id,
+  };
+}
+
 export function addReserva(item) {
   return {
-    type: "ADD_RESERVE",
+    type: "ADD_RESERVE_SUCESS",
     item,
   };
 }

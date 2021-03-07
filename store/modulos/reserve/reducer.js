@@ -2,7 +2,7 @@ import provide from "immer";
 
 export default function reducer(state = [], action) {
   switch (action.type) {
-    case "ADD_RESERVE":
+    case "ADD_RESERVE_SUCESS":
       return provide(state, (draft) => {
         const verifica = draft.findIndex((item) => item.id === action.item.id);
         if (verifica >= 0) {
@@ -30,7 +30,7 @@ export default function reducer(state = [], action) {
 
       return provide(state, (draft) => {
         const verifica = draft.findIndex((item) => item.id === action.id);
-        if (verifica >= 0) {
+        if ((verifica) => 0) {
           draft[verifica].amount = Number(action.amount);
         }
       });
