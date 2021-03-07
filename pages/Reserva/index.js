@@ -8,7 +8,6 @@ import { atualizaValor } from "../../store/modulos/reserve/action";
 
 export default function Reserva() {
   const seletor = useSelector((state) => state.reducer);
-  console.log(seletor);
   const dispatch = useDispatch();
 
   function excluirReserva(id) {

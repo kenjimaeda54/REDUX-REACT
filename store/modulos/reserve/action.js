@@ -5,7 +5,7 @@ export function addToReserveRequest(id) {
   };
 }
 
-export function addReserva(item) {
+export function addReserve(item) {
   return {
     type: "ADD_RESERVE_SUCESS",
     item,
