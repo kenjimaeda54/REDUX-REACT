@@ -6,17 +6,15 @@ import logo from "../../assests/logo.svg";
 export default function Header() {
   return (
     <header className="container">
-      <div>
         <Link to="/">
           <img src={logo} alt="meu logo" className="logo"></img>
         </Link>
-        <Link className="reserva" to="/reservas">
+        <Link className="reserva" to="/reserva">
           <div>
             <span>Minhas resevas</span>
             <strong>3 reservas</strong>
           </div>
         </Link>
-      </div>
     </header>
   );
 }
