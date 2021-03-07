@@ -1,9 +1,10 @@
 import React from "react";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdAddCircle, MdRemoveCircle } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 
 import { removeReserva } from "../../store/modulos/reserve/action";
 import "./reserva.css";
+import { atualizaValor } from "../../store/modulos/reserve/action";
 
 export default function Reserva() {
   const seletor = useSelector((state) => state.reducer);
@@ -11,6 +12,14 @@ export default function Reserva() {
 
   function excluirReserva(id) {
     dispatch(removeReserva(id));
+  }
+
+  function adicionaValor(item) {
+    dispatch(atualizaValor(item.id, item.amount + 1));
+  }
+
+  function removeValor(item) {
+    dispatch(atualizaValor(item.id, item.amount - 1));
   }
 
   return (
@@ -21,7 +30,17 @@ export default function Reserva() {
         <div key={item.id} className="reservas">
           <img src={item.image} alt={item.tile} />
           <strong>{item.title}</strong>
-          <span>Quantidade: {item.amount}</span>
+          <MdRemoveCircle
+            size="20px"
+            color="brand"
+            onClick={() => removeValor(item)}
+          />
+          <input value={item.amount} readOnly type="text" />
+          <MdAddCircle
+            size="20px"
+            color="brand"
+            onClick={() => adicionaValor(item)}
+          />
           <button type="button" onClick={() => excluirReserva(item.id)}>
             <MdDelete size={20} color="#191919" />
           </button>

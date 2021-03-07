@@ -11,3 +11,11 @@ export function removeReserva(id) {
     id,
   };
 }
+
+export function atualizaValor(id, amount) {
+  return {
+    type: "UPDATE_RESERVE",
+    id,
+    amount,
+  };
+}
