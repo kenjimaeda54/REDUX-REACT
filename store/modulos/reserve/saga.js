@@ -1,5 +1,6 @@
 import { call, all, put, takeLatest, select } from "redux-saga/effects";
 
+import history from "../../../servicos/history";
 import api from "../../../servicos/index";
 import { addReserve, atualizaReservaSucesso } from "../reserve/action";
 
@@ -27,6 +28,7 @@ function* addToReserve({ id }) {
       amount: 1,
     };
     yield put(addReserve(data));
+    history.push('/reserva');
   }
 }
 
@@ -35,8 +37,8 @@ function* addToValor({ id, amount }) {
   const estoque = yield call(api.get, `stock/${id}`);
   const totalEstoque = estoque.data.amount;
   if (amount > totalEstoque) {
-    alert("Atingiu o limite disponivel");
-    return;
+    alert("Atingiu o limite de reservas");
+    return; //se não colocar o return ele da erro e adicona um
   }
   yield put(atualizaReservaSucesso(id, amount));
 }
