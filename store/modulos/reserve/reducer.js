@@ -15,11 +15,7 @@ export default function reducer(state = [], action) {
         }
       });
 
-    case "UPDATE_RESERVE":
-      if (action.amount <= 0) {
-        return state;
-      }
-
+    case "UPDATE_RESERVE_SUCESS":
       return produce(state, (draft) => {
         const verifica = draft.findIndex((item) => item.id === action.id);
 

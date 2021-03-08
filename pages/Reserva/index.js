@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { removeReserva } from "../../store/modulos/reserve/action";
 import "./reserva.css";
-import { atualizaValor } from "../../store/modulos/reserve/action";
+import { atualizaReservaRequisicao } from "../../store/modulos/reserve/action";
 
 export default function Reserva() {
   const seletor = useSelector((state) => state.reducer);
@@ -15,11 +15,11 @@ export default function Reserva() {
   }
 
   function adicionaValor(item) {
-    dispatch(atualizaValor(item.id, item.amount + 1));
+    dispatch(atualizaReservaRequisicao(item.id, item.amount + 1));
   }
 
   function removeValor(item) {
-    dispatch(atualizaValor(item.id, item.amount - 1));
+    dispatch(atualizaReservaRequisicao(item.id, item.amount - 1));
   }
 
   return (

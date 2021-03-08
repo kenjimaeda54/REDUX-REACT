@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import api from "../../servicos/index";
 import "./home.css";
-import {  addToReserveRequest } from "../../store/modulos/reserve/action";
+import { addToReserveRequest } from "../../store/modulos/reserve/action";
 //por ser apenas export function sem o default,precisa colocar como objeto.
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     async function dados() {
-      const dados = await api.get('trips');
+      const dados = await api.get("trips");
       setResultado(dados.data);
     }
     dados();
