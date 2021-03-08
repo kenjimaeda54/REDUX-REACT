@@ -9,9 +9,17 @@ function* addToReserve({ id }) {
     //esse state reducer esta na pagina de resevas
     //quando usuario clica no botao de adiconar reserva,ele vai para pagina reserva e la tem um estado
   );
+  const estoque = yield call(api.get, `stock/${id}`);
+  const addStoque = estoque.data.amount;
+  const existeStoque = estado ? estado.amount : 0;
+  const amount = existeStoque + 1;
+
+  if (amount > addStoque) {
+    alert("Atingiu a quantidade maxima");
+    return;
+  }
 
   if (estado) {
-    const amount = estado.amount + 1;
     yield put(atualizaValor(id, amount));
   } else {
     const response = yield call(api.get, `trips/${id}`);
