@@ -28,7 +28,7 @@ function* addToReserve({ id }) {
       amount: 1,
     };
     yield put(addReserve(data));
-    history.push('/reserva');
+    history.push('/reserva'); //cuidado com os "" isto pode quebrar você;
   }
 }
 
